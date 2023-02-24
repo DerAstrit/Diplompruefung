@@ -21,7 +21,7 @@ mkdir -p "$Ordnername"/Scoping "$Ordnername"/Information_Gathering/Portscan/TCP 
 
 touch "$Ordnername"/Exploitation/Exploitation.txt "$Ordnername"/Reporting/Reporting.txt "$Ordnername"/Reporting/Information_Gathering.txt "$Ordnername"/Reporting/Vurnability_Research.txt "$Ordnername"/Reporting/Exploitation.txt
 
-cat << EOF > "$Ordnername"/Scoping/Scope.txt
+cat << EOF > "$Ordnername"/Scoping/Contract.txt
 Contract
 
 Customer / Emergency contact
