@@ -3,6 +3,7 @@
 	Bash script abändern 
 	chmod 777 script.bash
 	./script.bash
+	Delete Vulnability_Research/Webserver_vulnability/targetIP && Vulnability_Research/Webserver_vulnability/NmapIpScan From Cherrytree
 
 2. HD Mounting 
 3. DNS
