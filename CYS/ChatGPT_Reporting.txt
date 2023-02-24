@@ -1,0 +1,20 @@
+Information Gathering:
+
+	- can you write me the Ip and all open ports with the version and if Service Info: exist this also from the ip from this text:
+		
+		{Input just one IP scan from the UDP_TCP_Scan.txt}
+		
+	- now for this the same:
+
+		{Input the next IP scan from the UDP_TCP_Scan.txt}
+
+
+Vurnability Reasearch:
+		
+	- Can you write me a well detailed report about the vulnerabilities of this scan:
+		
+		{Input just one IP scan from the Port_vurnerability_nmap.txt}
+
+	- now for this the same:
+
+		{Input the next IP scan from the Port_vurnerability_nmap.txt}
