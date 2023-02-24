@@ -16,7 +16,7 @@ HostIpAddress="192.168.120.51"
 HostIpGateway="192.168.120.1"
 
 #########################################################################################
-wpscan --update &
+wpscan --update;
 
 mkdir -p "$Ordnername"/Scoping "$Ordnername"/Information_Gathering/Portscan/TCP "$Ordnername"/Information_Gathering/Portscan/UDP "$Ordnername"/Information_Gathering/Target_Review/ICMP "$Ordnername"/Vurnability_Research/Webserver_vulnerability "$Ordnername"/Vurnability_Research/Wordpress_vulnerability "$Ordnername"/Exploitation "$Ordnername"/Reporting && 
 
