@@ -1,0 +1,54 @@
+NIEMALS sda nehmen!
+
+Festplatte finden:
+
+    lshw -class disk | less
+--------------------------------
+    blkid
+--------------------------------
+    lsblk
+
+Partitionieren:
+
+    fdisk /dev/sdb
+    n = new
+    Primary or erweitert = p (primary)
+    1-4 = 1 (enter)
+    enter
+    enter
+    mit w auf festplatte schreiben
+
+
+Formatieren:
+
+    mkfs.ext4 /dev/sdb1
+    mkdir /www
+
+Mounting:
+
+    nano /etc/fstab
+    /dev/sdb1 /www ext4 defaults 1 2
+    
+    save exit
+
+    mount -a
+    mount
+
+
+Auf festplatte zugreifen
+    cd /www
+
+Verzeichnis für Apache einfügen:
+    mkdir /www/uhr.dmz
+    nano index.html
+
+webseite auf neue festplatte
+
+    www.uhr.dmz
+    DocumentRoot /www
+
+
+
+dns sehr warscheinlich auf sda festplatte (standard)
+auf hauptsystem apache und dns installieren und konfigurieren
+

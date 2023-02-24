@@ -1,0 +1,28 @@
+Melden Sie sich als Root-Benutzer an.
+
+Öffnen Sie die SSH-Konfigurationsdatei:
+
+    sudo nano /etc/ssh/sshd_config
+
+
+Suchen Sie die Zeile "Port 22" in der Datei und ändern Sie die Portnummer von 22 in eine andere Portnummer. Zum Beispiel wenn der Port auf 2222 ändern sollte:
+
+    Port 2222
+
+
+Speichern und schließen Sie die Datei.
+
+
+Starten Sie den SSH-Dienst neu:
+
+    sudo systemctl restart sshd
+
+
+Überprüfen Sie, ob die SSH-Verbindung auf den neuen Port funktioniert, indem Sie sich von einem Remote-Computer aus mit dem neuen Port verbinden:
+
+    ssh [benutzername]@[ip-adresse] -p [neuer-port]
+
+
+Hinweis: Wenn Sie die Firewall auf Ihrem Server aktiviert haben, müssen Sie den neuen SSH-Port in der Firewall öffnen, damit der Server über diesen Port erreichbar ist. Sie können dies tun, indem Sie eine neue Regel für den neuen SSH-Port erstellen. Zum Beispiel können Sie mit dem folgenden Befehl eine Regel für den Port 2222 erstellen:
+
+    sudo ufw allow 2222/tcp

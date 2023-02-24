@@ -1,0 +1,10 @@
+1. Cys
+	sudo su 
+	Bash script abändern 
+	chmod 777 script.bash
+	./script.bash
+
+2. HD Mounting 
+3. DNS
+4. Apache 
+5. SSH Port
