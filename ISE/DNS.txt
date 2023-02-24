@@ -1,0 +1,125 @@
+installation vorher netzwerkeinstellungen machen Powershell
+
+sudo apt-get remove bind9
+sudo apt-get update
+sudo apt-get upgrade
+
+sudo su
+
+nano /etc/netplan/00-eth0.yaml
+
+Sudo su
+apt-get install bind9
+cd /etc/bind/
+nano named.conf.local
+
+
+zone "uhr.dmz" {
+type master;
+file "/etc/bind/db.uhr.dmz";
+};
+zone "uhr.int" {
+type master;
+file "/etc/bind/db.uhr.int";
+};
+zone "110.168.192.in-addr.arpa" {
+type master;
+file "/etc/bind/db.192.168.110";
+};
+zone "120.168.192.in-addr.arpa" {
+type master;
+file "/etc/bind/db.192.168.120";
+};
+
+nano db.uhr.dmz
+
+$TTL    86400
+@       IN      SOA     uhrns.uhr.dmz. root.uhr.dmz. (
+                      202302191         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                          86400 )       ; Negative Cache TTL
+;
+@       IN      NS      uhrns.uhr.dmz.
+@       IN      A       192.168.110.60
+www     IN      A       192.168.110.61
+uhrns   IN      A       192.168.110.60
+vmWP1   IN      A       192.168.110.10
+vmls2   IN      A       192.168.110.61
+
+
+nano db.uhr.int
+
+$TTL    86400
+@       IN      SOA     uhrns.uhr.dmz. root.uhr.dmz. (
+                      202302191         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                          86400 )       ; Negative Cache TTL
+;
+@       IN      NS      uhrns.uhr.dmz.
+@       IN      A       192.168.110.60
+uhr1       IN      A       192.168.120.100
+uhr2       IN      A       192.168.120.102
+
+
+nano db.192.168.110
+
+$TTL    86400
+@       IN      SOA     uhrns.uhr.dmz. root.uhr.dmz. (
+                      202302191         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                          86400 )       ; Negative Cache TTL
+
+@ 		IN 		NS 		uhrns.uhr.dmz.
+60 		IN 		PTR 	uhrns.uhr.dmz.
+61		IN		PTR		www.uhr.dmz.
+61       IN      PTR       vmLS2
+60       IN      PTR       vmLS1
+
+nano db.192.168.120
+
+$TTL    86400
+@       IN      SOA     uhrns.uhr.dmz. root.uhr.dmz. (
+                      202302191         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                          86400 )       ; Negative Cache TTL
+
+@ 		IN 		NS 		uhrns.uhr.dmz.
+60 		IN 		PTR 	uhrns.uhr.dmz.
+100      IN      PTR     uhr1.uhr.int.
+102       IN      PTR    uhr2.uhr.int.
+
+
+nano named.conf.options
+
+options {
+directory "/var/cache/bind";
+forwarders { 8.8.8.8; };
+allow-query { 192.168.0.0/16 ; };
+dnssec-validation no;
+auth-nxdomain no;
+};
+
+
+
+systemctl restart bind9
+systemctl status bind9
+journalctl -xe
+
+
+nslookup uhrns.uhr.dmz
+nslookup uhr1.uhr.int
+nslookup 192.168.110.61
+nslookup 192.168.120.100
+
+
+
+
+
