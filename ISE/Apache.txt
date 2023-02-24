@@ -1,0 +1,55 @@
+Installation Apache
+
+apt-get update
+apt-get upgrade
+
+apt-get install apache2 apache2-utils
+
+
+
+
+nano /etc/apache2/sites-available/www.uhr.dmz.conf
+
+
+<VirtualHost *:80>
+        ServerName www.uhr.dmz
+        ServerAdmin root@localhost
+        DocumentRoot /hp/uhr.dmz
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        <Directory "/hp/uhr.dmz">
+                Require all granted
+        </Directory>
+</VirtualHost>
+
+cd ..
+
+mkdir /hp
+cd hp
+mkdir uhr.dmz
+nano index.html 
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mein Name</title>
+  </head>
+  <body>
+    <h1>Astrit Selimi</h1>
+  </body>
+</html>
+
+
+
+sudo a2ensite www.uhr.dmz.conf
+systemctl reload apache2
+systemctl restart apache2
+
+Notfall
+
+nano /etc/apache2/ports.conf
+
+NameVirtualHost *:80             einfügen
