@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Praxisobjekt_Test1
+{
+    static class OrdnerErstellen
+
+
+    {
+        static public String Ordnern(string Webseite)
+        {
+
+            // Speicherort angeben.
+            string folderName = @"c:\Webseiten\";
+
+            // Neuer Ordner nach der Webseite benennen
+            string pathString = System.IO.Path.Combine(folderName, Webseite);
+
+            // Ornder erstellen
+            System.IO.Directory.CreateDirectory(pathString);
+
+            
+
+            return pathString;
+        }
+        
+
+
+    }
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+using System.IO;
+using System.Reflection;
+using System.Security.AccessControl;
+using System.Security.Principal;
+using System.Text.RegularExpressions;
+
+
+string fileMitPfad = @"C:\Webseiten\dfh.txt";
+string suchwort = "auto";
+
+
+
+List<string> imageLinks = new List<string>();
+
+string Text = File.ReadAllText(fileMitPfad);
+MatchCollection matches = Regex.Matches(Text, @suchwort, RegexOptions.IgnoreCase);
+
+foreach (Match match in matches)
+{
+    imageLinks.Add(match.Groups[1].Value);
+    Console.WriteLine(match);
+}
+
+
+Console.WriteLine("Number of " + suchwort +" found: " + imageLinks.Count);

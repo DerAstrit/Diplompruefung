@@ -1,0 +1,21 @@
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Security.AccessControl;
+using System.Security.Principal;
+using System.Text.RegularExpressions;
+using static System.Net.Mime.MediaTypeNames;
+                                            
+
+string Pfad = @"C:\Webseiten\";
+string Ordnername;
+
+string[] Unterordner = Directory.GetDirectories(Pfad);
+
+for (int i = 0; i < Unterordner.Length; i++)
+{   
+    DirectoryInfo infoordner = new DirectoryInfo(Pfad);
+    DirectorySecurity ordnersicherheit = infoordner.GetAccessControl();
+    IdentityReference benutzerinfo = ordnersicherheit.GetOwner(typeof(NTAccount));
+   
+    Console.WriteLine($"Das {i + 1}. Element ist: {Unterordner[i]} {benutzerinfo}");
+}  

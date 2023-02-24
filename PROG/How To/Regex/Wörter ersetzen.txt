@@ -1,0 +1,14 @@
+using System.IO;
+using System.Reflection;
+using System.Security.AccessControl;
+using System.Security.Principal;
+using System.Text.RegularExpressions;
+
+
+string pattern = "(Mr\\.? |Mrs\\.? |Miss |Ms\\.? )";
+string[] names = { "Mr. Henry Hunt", "Ms. Sara Samuels",
+                         "Abraham Adams", "Ms. Nicole Norris" };
+
+
+foreach (string name in names)
+    Console.WriteLine(Regex.Replace(name, pattern, String.Empty));

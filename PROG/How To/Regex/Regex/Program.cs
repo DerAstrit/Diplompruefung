@@ -1,0 +1,59 @@
+﻿using System.Net;
+using System.Text.RegularExpressions;// dieser Biblioteke für Regex 
+
+
+string Webseite_URL;
+string Speicherort = @"C:\Webseiten\\";
+string Webseite = "www.gibb.ch";
+string s = "";
+
+//Verbindung zum Internet 
+WebClient Client = new WebClient();
+
+//Eingabe Webseite 
+Console.WriteLine("Gib deine Webseite ein?");
+Webseite_URL = Console.ReadLine();
+
+if (!Webseite_URL.StartsWith("https://www."))
+{
+    Webseite_URL = "https://www." + Webseite_URL;
+}
+
+s = Client.DownloadString(Webseite_URL);
+//Der Quelltext der Mainpage Herunterladen
+//Client.DownloadFile(Webseite_URL, @"C:\\Webseiten\\" + ".html");
+Client.DownloadFile(Webseite_URL, Speicherort + Path.GetFileName(Webseite_URL) + ".html");
+
+string dateiname = Speicherort + Path.GetFileName(Webseite_URL) + ".html";
+List<string> CSSLinks = Webcrawler.cssfinden.GetCssFiles(dateiname);
+List<string> Bilder = Webcrawler.bildfinden.GetImageLinks(dateiname);
+List<string> JSLinks = Webcrawler.jsfinden.GetJSFiles(dateiname);
+
+foreach (string CSSLink in CSSLinks)
+{
+    Client.DownloadFile(CSSLink, Speicherort + Path.GetFileName(Webseite_URL) + Path.GetFileName(CSSLink));
+    Console.WriteLine(CSSLink);
+}
+
+foreach (string Bilders in Bilder)
+{
+    Client.DownloadFile(Bilders, Speicherort + Path.GetFileName(Webseite_URL) + Path.GetFileName(Bilders)+".png");
+    Console.WriteLine(Bilders);
+}
+
+foreach (string JSLink in JSLinks)
+{
+    if (JSLink.StartsWith("https://www."))
+    {
+        Client.DownloadFile(JSLink, Speicherort + Path.GetFileName(Webseite_URL) + Path.GetFileName(JSLink));
+    }
+    Console.WriteLine(JSLink);
+}
+
+Console.WriteLine("Anzahl JS " + JSLinks.Count +"Anzahl CSS "+ CSSLinks.Count + "Anzahl Bilder " + Bilder.Count);
+
+//! Argument umgedreht 
+//Console.ReadLine();
+
+
+

@@ -1,0 +1,17 @@
+Liebe alle
+
+Auf mehrfache Anfrage habe ich für euch eine Checkliste zur Vorbereitung der Diplomprüfung erstellt.
+Wie bereits im Unterricht erläutert, wird es keine Theoriefragen geben. 
+Der Themenbereich wird sich an der Internetanbindung ähnlich wie im Webcrawler orientieren.
+
+Aufbau eines Programms 
+- Variablen: Deklaration, Instanziierung, Zuweisungen, Datentypen, Sichtbarkeit, Umwandlungen
+- Methoden: Deklaration, Parameter, Rückgabewerte, Aufrufe
+- Kontrollstrukturen: Bedingungen, boolsche Algebra, Verzweigungen, Schleifen
+Mathematische Funktionen
+Zeichenkettenmanipulationen = Schwerpunkt (Länge, Hinzufügen, Entfernen, Suchen, Ausschneiden)
+Anwenden von Arrays und Listen: Deklaration, Instanziierung, Zuweisung, Nutzung
+Webseiten (oder ähnliche, bekannte Protokolle, Dienste) verbinden, Daten abrufen, Daten senden, abgerufene Daten weiterverarbeiten
+Textdateien erstellen, befüllen, auslesen
+
+Die Verwendung von Drittkomponenten (NuGet Pakete) ist zulässig. Die Verwendung von Code aus fremden Quellen (Internet) ist zulässig, muss aber per Kommentar klar ausgewiesen werden.

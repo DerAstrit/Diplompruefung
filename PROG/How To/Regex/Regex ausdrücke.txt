@@ -1,0 +1,11 @@
+Bilder
+
+MatchCollection matches = Regex.Matches(htmlText, @"<img.*?src=[""'](.*?)[""'].*?>", RegexOptions.IgnoreCase);
+
+CSS
+
+MatchCollection matches = Regex.Matches(htmlText, @"<link.*?href=[""'](.*?\.css)[""'].*?>", RegexOptions.IgnoreCase);
+
+links
+
+MatchCollection matches = Regex.Matches(htmlText, @"href=\u0022(.*?)\u0022", RegexOptions.IgnoreCase);

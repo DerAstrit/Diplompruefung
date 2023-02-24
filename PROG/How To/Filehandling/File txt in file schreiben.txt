@@ -1,0 +1,26 @@
+using System.IO;
+using System.Reflection;
+using System.Security.AccessControl;
+using System.Security.Principal;
+
+
+string pfad = @"C:\Webseiten\";
+string FileName = "";
+
+
+Console.WriteLine("Wie soll die Datei bennent werden?");
+
+FileName = Console.ReadLine();
+string fileMitPfad = Path.Combine(pfad, FileName);
+
+//File.Create(Path.Combine(pfad, FileName));
+
+
+
+ 
+using (StreamWriter filetext = File.AppendText(fileMitPfad))
+{
+    filetext.WriteLine("This");
+    filetext.WriteLine("is Extra");
+    filetext.WriteLine("Text");
+}

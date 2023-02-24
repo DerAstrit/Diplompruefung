@@ -1,0 +1,25 @@
+  static void Main(string[] args)
+    {
+
+        string Pfad = @"c:\Webseiten\";
+        string Dateiname = "NeueDatei.txt";
+        string pfadkomplet = Pfad + Dateiname;
+
+        if (File.Exists(pfadkomplet))
+        {
+            string txt = File.ReadAllText(pfadkomplet);
+            if (txt == "")
+            {
+                Console.WriteLine("kein Text in der Datei");
+            }
+            else
+            {
+                Console.WriteLine(txt);
+            }
+        }
+        else
+        {
+            Console.WriteLine("file nicht gefunden");
+        }
+
+    }

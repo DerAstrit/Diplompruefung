@@ -1,0 +1,33 @@
+using System.IO;
+using System.Reflection;
+using System.Security.AccessControl;
+using System.Security.Principal;
+
+string pfad = @"C:\Webseiten\asdga.txt";
+
+
+
+FileInfo fileInfo = new FileInfo(pfad);
+FileSecurity fileSecurity = fileInfo.GetAccessControl();
+
+
+Console.WriteLine(fileSecurity.GetOwner(typeof(NTAccount)));
+Console.WriteLine(fileInfo.Length);
+
+
+/*
+
+string[] filedatum = Directory.GetFiles(pfad); // Sortiert nach Datum alt vorher sonst a und b drehen 
+Array.Sort(filedatum, (a, b) => File.GetLastWriteTime(a).CompareTo(File.GetLastWriteTime(b))); 
+
+foreach (string file in filedatum)
+{
+    FileInfo fileInfo = new FileInfo(pfad); 
+
+    FileSecurity fileSecurity = fileInfo.GetAccessControl();
+
+    IdentityReference benutzerinfo = fileSecurity.GetOwner(typeof(NTAccount));
+
+    Console.WriteLine($"{file} {File.GetLastWriteTime(file)} {benutzerinfo}");
+}
+*/

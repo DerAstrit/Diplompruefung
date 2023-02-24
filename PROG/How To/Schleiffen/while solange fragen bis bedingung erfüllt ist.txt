@@ -1,0 +1,52 @@
+
+int zahl = 1;
+
+//während macht solange wie bedingung erfüllt oder ein break kommt
+
+while(zahl<10)
+{
+    Console.WriteLine(zahl);
+    zahl++;
+}
+
+
+//doWhile die schleiffe fährt mindestens einmal duch auch wenn die bedingung nicht erfüllt ist
+
+do
+{
+    Console.WriteLine(zahl);
+
+    zahl++;
+
+}while(zahl<10);
+
+
+
+
+
+
+
+
+Mit break aus der schlauffe kommen
+
+
+int zahl = 1;
+
+while (zahl < 30)
+{
+
+    if (zahl == 21)
+
+    { break;
+
+    }
+
+    else
+
+
+    Console.WriteLine(zahl);
+    zahl++;
+}
+
+
+

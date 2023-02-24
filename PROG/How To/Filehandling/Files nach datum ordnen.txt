@@ -1,0 +1,21 @@
+using System.IO;
+using System.Reflection;
+using System.Security.AccessControl;
+using System.Security.Principal;
+
+string pfad = @"C:\Webseiten\";
+string FileName = "";
+
+string[] filedatum = Directory.GetFiles(pfad); // Sortiert nach Datum a nach b 
+Array.Sort(filedatum, (a, b) => File.GetLastWriteTime(a).CompareTo(File.GetLastWriteTime(b))); 
+
+foreach (string file in filedatum)
+{
+    FileInfo fileInfo = new FileInfo(pfad); 
+
+    FileSecurity fileSecurity = fileInfo.GetAccessControl();
+
+    IdentityReference benutzerinfo = fileSecurity.GetOwner(typeof(NTAccount));
+
+    Console.WriteLine($"{file} {File.GetLastWriteTime(file)} {benutzerinfo}");
+}
